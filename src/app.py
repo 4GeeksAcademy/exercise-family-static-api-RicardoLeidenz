@@ -48,15 +48,15 @@ def handle_members():
 def handle_get_member(id):
     #If method is POST
     if request.method == 'DELETE':
-        pass
+        response_body = jackson_family.delete_member(id)
     else:
         response_body = jackson_family.get_member(id)
-        #If the response is a dict we return it
-        if isinstance(response_body, dict):
-            return jsonify(response_body), 200
-        #If not we return the error
-        else:
-            return response_body, 400
+    #If the response is a dict we return it
+    if isinstance(response_body, dict):
+        return jsonify(response_body), 200
+    #If not we return the error
+    else:
+        return response_body, 400
 
 
 
