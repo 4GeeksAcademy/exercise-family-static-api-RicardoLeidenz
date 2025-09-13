@@ -37,16 +37,18 @@ def handle_members():
         return response_body, 200
     else:
         members = jackson_family.get_all_members()
+        #If the response is a list we return it
         if isinstance(members,list):
             response_body = members
             return jsonify(response_body), 200
+        #If not we return the error
         else:
             return "Status: Members could not be fetched", 400
 
 
 @app.route('/members/<int:id>', methods=['GET','DELETE'])
 def handle_get_member(id):
-    #If method is POST
+    #If method is DELETE
     if request.method == 'DELETE':
         response_body = jackson_family.delete_member(id)
     else:

@@ -56,19 +56,23 @@ class FamilyStructure:
         return "Member information missing or incorrect"
 
     def delete_member(self, id):
+        #Check if member is in the list per id
         for member in self._members:
             if member["id"] == id:
                 self._members.remove(member)
                 return {
                     "done": True
                 }  
+        #If not return a string with the error
         return "ID not found"
 
     def get_member(self, id):
+        #Check if member is in the list per id
         for member in self._members:
             if member["id"] == id:
                 return member
-        pass
+        #If not return a string with the error
+        return "ID not found"
 
     # This method is done, it returns a list with all the family members
     def get_all_members(self):
