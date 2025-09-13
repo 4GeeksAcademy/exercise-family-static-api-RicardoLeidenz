@@ -69,6 +69,7 @@ def test_get_single_member_implemented(client):
         "lucky_numbers": [1, 2, 3]
     })
     tommy = json.loads(post_response.data)
+    print(tommy)
     get_response = client.get(f"/members/{tommy['id']}")
     assert get_response.status_code == 200, "The GET /members/<int:id> method should exist"
 

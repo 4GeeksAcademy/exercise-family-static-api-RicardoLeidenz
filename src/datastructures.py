@@ -16,6 +16,20 @@ class FamilyStructure:
                 "last_name": last_name,
                 "age": 33,
                 "lucky_numbers": [7, 13, 22]
+            },
+            {
+                "id": self._generate_id(),
+                "first_name": "Jane",
+                "last_name": last_name,
+                "age": 35,
+                "lucky_numbers": [10, 14, 3]
+            },
+            {
+                "id": self._generate_id(),
+                "first_name": "Jimmy",
+                "last_name": last_name,
+                "age": 5,
+                "lucky_numbers": [1]
             }
         ]
 
@@ -26,9 +40,20 @@ class FamilyStructure:
         return generated_id
 
     def add_member(self, member):
-        ## You have to implement this method
-        ## Append the member to the list of _members
-        pass
+        keys_to_check = ["first_name", "age", "lucky_numbers"]
+        #Check if all information was provided
+        if all(key in member for key in keys_to_check):
+            new_member = {
+                "id": self._generate_id(),
+                "first_name": member["first_name"],
+                "last_name": self.last_name,
+                "age": member["age"],
+                "lucky_numbers": member["lucky_numbers"]
+            }
+            self._members.append(new_member)
+            return new_member
+        #If not return a string with the error
+        return "Member information missing or incorrect"
 
     def delete_member(self, id):
         ## You have to implement this method
@@ -36,8 +61,9 @@ class FamilyStructure:
         pass
 
     def get_member(self, id):
-        ## You have to implement this method
-        ## Loop all the members and return the one with the given id
+        for member in self._members:
+            if member["id"] == id:
+                return member
         pass
 
     # This method is done, it returns a list with all the family members
