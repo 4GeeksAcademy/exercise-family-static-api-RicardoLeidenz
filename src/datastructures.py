@@ -1,10 +1,3 @@
-"""
-Update this file to implement the following already declared methods:
-- add_member: Should add a member to the self._members list
-- delete_member: Should delete a member from the self._members list
-- get_member: Should return a member from the self._members list
-"""
-
 class FamilyStructure:
     def __init__(self, last_name):
         self.last_name = last_name
